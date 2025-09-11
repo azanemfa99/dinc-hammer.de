@@ -1,64 +1,81 @@
-/* ===== Tema ===== */
-:root{
-  --bg:#0b1320; --ink:#edf2f7; --muted:#b8c3d6;
-  --brand:#d9b36f; --panel:#0f214b; --line:#1c2941;
-  --glass:rgba(10,16,30,.6);
+// Yıl
+document.getElementById('y').textContent = new Date().getFullYear();
+
+// Parallax (mouse ile arka planı hafif oynat)
+(() => {
+  const bg = document.getElementById('bg');
+  let tx=0, ty=0, cx=0, cy=0, raf=null;
+  function move(e){
+    const x = (e.clientX / innerWidth - .5) * 10; // ±10px
+    const y = (e.clientY / innerHeight - .5) * 10;
+    tx=x; ty=y; if(!raf) raf=requestAnimationFrame(apply);
+  }
+  function apply(){ cx += (tx-cx)*.08; cy += (ty-cy)*.08; bg.style.transform = `translate3d(${cx}px, ${cy}px, 0)`; raf=null; }
+  addEventListener('mousemove', move, {passive:true});
+})();
+
+// --- Galeriler (her biri bağımsız) ---
+// İnternetten örnek 2 görsel; istersen kendi URL’lerinle değiştirebilirsin.
+const GALLERIES = {
+  abbruch: {
+    title: "Abbruch – Galerie",
+    images: [
+      "https://images.unsplash.com/photo-1604014237800-1c9102b1e3f1?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  reinigung: {
+    title: "Gebäudereinigung – Galerie",
+    images: [
+      "https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1501127122-f385ca6ddd9d?q=80&w=1600&auto=format&fit=crop"
+    ]
+  },
+  garten: {
+    title: "Gartenarbeiten – Galerie",
+    images: [
+      "https://images.unsplash.com/photo-1501004318641-b39e6451bec6?q=80&w=1600&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1469536526925-9b5547cd7ef2?q=80&w=1600&auto=format&fit=crop"
+    ]
+  }
+};
+
+// Modal referansları
+const modal = document.getElementById('galleryModal');
+const grid  = document.getElementById('galleryGrid');
+const title = document.getElementById('galleryTitle');
+
+// Kartlara tıklayınca ilgili galeriyi yükle
+document.querySelectorAll('.card[data-gallery]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    const key = btn.getAttribute('data-gallery');
+    const gal = GALLERIES[key];
+    if(!gal) return;
+
+    title.textContent = gal.title;
+    grid.innerHTML = '';
+    gal.images.forEach((src,i)=>{
+      const img = new Image();
+      img.loading = 'lazy';
+      img.alt = `${gal.title} Bild ${i+1}`;
+      img.src = src;
+      grid.appendChild(img);
+    });
+
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden'; // arka plan kaymasın
+  });
+});
+
+// Kapatma (arka plana veya X’e basınca, ESC ile)
+modal.addEventListener('click', e=>{
+  if(e.target.hasAttribute('data-close') || e.target === modal){
+    closeModal();
+  }
+});
+addEventListener('keydown', e=>{ if(e.key === 'Escape' && modal.classList.contains('show')) closeModal(); });
+
+function closeModal(){
+  modal.classList.remove('show');
+  document.body.style.overflow = '';
 }
-
-/* Genel */
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;color:var(--ink);font:16px/1.55 Inter,system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue",Arial,sans-serif;background:var(--bg);overflow-x:hidden}
-
-/* Üst bar */
-.topbar{position:sticky;top:0;z-index:30;background:linear-gradient(180deg,rgba(8,14,28,.85),rgba(8,14,28,.65));backdrop-filter:blur(8px);border-bottom:1px solid rgba(255,255,255,.08)}
-.wrap{max-width:1140px;margin:0 auto;padding:10px 18px;display:flex;align-items:center;justify-content:space-between}
-.brand{display:flex;gap:10px;align-items:center;color:var(--ink);text-decoration:none}
-.brand-ico{width:28px;height:28px;opacity:.9;filter:grayscale(1) brightness(.95)}
-.brand-text{display:flex;flex-direction:column;line-height:1}
-.brand-text strong{letter-spacing:.3px}
-.brand-text span{color:var(--muted);font-size:.88rem}
-.nav{display:flex;gap:8px}
-.chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:var(--glass);border:1px solid rgba(255,255,255,.14);color:var(--ink);text-decoration:none}
-
-/* Arka plan (arkaplan.png) yumuşak hareket + parallax */
-.bg{position:fixed;inset:-8% -8%;z-index:-1;background:url("arkaplan.png") center/cover no-repeat;animation:kenburns 28s ease-in-out infinite alternate;filter:saturate(.95) contrast(1.04)}
-@keyframes kenburns{0%{transform:scale(1)}100%{transform:scale(1.08) translate3d(1%, -1%, 0)}}
-
-/* Hero */
-.hero{min-height:64vh;display:grid;place-items:center}
-.hero-inner{text-align:center;padding:12vh 18px 8vh}
-.hero h1{font-size:clamp(28px,3.4vw,44px);margin:0 0 8px}
-.lead{color:var(--muted);margin:0 0 16px}
-.cta{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;gap:10px;padding:10px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:var(--glass);text-decoration:none;color:var(--ink)}
-.btn.primary{background:var(--brand);color:#1b2436;border-color:transparent}
-
-/* Kartlar */
-.section{padding:56px 0}
-.container{max-width:1140px;margin:0 auto;padding:0 18px}
-.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.card{cursor:pointer;border:1px solid var(--line);background:#0f214bcc;color:var(--ink);border-radius:16px;padding:18px;text-align:center;transition:transform .2s ease, box-shadow .2s ease}
-.card:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(0,0,0,.35)}
-.card-ico{font-size:28px;margin-bottom:6px}
-.card h3{margin:0 0 6px}
-
-/* Footer */
-.footer{border-top:1px solid rgba(255,255,255,.08);background:rgba(8,14,28,.8)}
-.foot{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding:18px}
-.foot-col{display:flex;flex-direction:column;gap:4px}
-.footer a{color:#cfe0ff;text-decoration:none}
-
-/* Modal (galeri kutusu) */
-.modal{position:fixed;inset:0;z-index:40;display:none}
-.modal.show{display:block}
-.modal-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.55)}
-.modal-body{position:relative;max-width:980px;margin:6vh auto;padding:18px;border-radius:16px;background:linear-gradient(180deg,#0f214b,#0d1c3e);border:1px solid var(--line);box-shadow:0 20px 50px rgba(0,0,0,.5)}
-.modal-close{position:absolute;right:10px;top:10px;border:0;background:transparent;color:#fff;font-size:22px;cursor:pointer}
-#galleryTitle{margin:0 0 12px}
-.gallery-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.gallery-grid img{width:100%;height:320px;object-fit:cover;border-radius:10px;border:1px solid rgba(255,255,255,.08)}
-
-/* Responsive */
-@media (max-width:960px){.cards{grid-template-columns:1fr 1fr}.gallery-grid img{height:260px}}
-@media (max-width:640px){.cards{grid-template-columns:1fr}.hero{min-height:58vh}.gallery-grid{grid-template-columns:1fr}.gallery-grid img{height:240px}}
