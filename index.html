@@ -3,180 +3,89 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DİNÇ HAMMER — Next</title>
-  <meta name="description" content="DİNÇ HAMMER: Abbruch, Gebäudereinigung, Gartenarbeiten. Zukunftssicher, schnell, zuverlässig — Nürnberg & Umgebung." />
-  <meta name="theme-color" content="#0b1020" />
-  <meta property="og:title" content="DİNÇ HAMMER — Next" />
-  <meta property="og:description" content="Abbruch · Reinigung · Garten — Zukunftsorientierter Service aus Nürnberg." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="arkaplan.png" />
-  <link rel="icon" href="arkaplan.png" />
-  <link rel="preload" href="arkaplan.png" as="image">
+  <title>DİNÇ HAMMER – Abbruch · Gebäudereinigung · Gartenarbeiten</title>
+  <meta name="description" content="DİNÇ HAMMER: Abbrucharbeiten, Gebäudereinigung und Gartenarbeiten in Nürnberg und Umgebung." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Interactive background layers -->
-  <canvas id="bg-particles" aria-hidden="true"></canvas>
-  <div class="bg-texture"></div>
-  <div class="scanline" aria-hidden="true"></div>
-
-  <!-- Header / Nav -->
-  <header class="nav">
-    <div class="container nav__inner">
+  <!-- Üst bar -->
+  <header class="topbar">
+    <div class="wrap">
       <a class="brand" href="#top" aria-label="Startseite">
-        <span class="brand__title">DİNÇ HAMMER</span>
-        <span class="brand__sub">Abbruch · Reinigung · Garten</span>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Construction_helmet_icon.svg" alt="" class="brand-ico" />
+        <div class="brand-text">
+          <strong>DİNÇ HAMMER</strong>
+          <span>Abbruch · Reinigung · Garten</span>
+        </div>
       </a>
-      <nav class="nav__links">
-        <a href="#leistungen">Leistungen</a>
-        <a href="#ueber">Über uns</a>
-        <a class="chip" href="tel:+4917662442952">📞 0176 6244 2952</a>
+      <nav class="nav">
+        <a class="chip" href="https://wa.me/4917662442952" target="_blank" rel="noopener">WhatsApp</a>
+        <a class="chip" href="mailto:info@dinc-hammer.de">E-Mail</a>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <main id="top" class="hero">
-    <div class="container hero__grid">
-      <div class="hero__copy">
-        <h1 class="fx-gradient">Sauber. Schnell. Zukunftssicher.</h1>
-        <p class="muted">
-          Abbrucharbeiten, Gebäudereinigung und Gartenarbeiten — präzise geplant,
-          zuverlässig ausgeführt. Nürnberg · Fürth · Erlangen.
-        </p>
-        <div class="cta-row">
-          <a class="btn btn--primary" href="tel:+4917662442952">Jetzt anrufen</a>
-          <a class="btn" href="https://wa.me/4917662442952" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn btn--ghost" href="#kontakt">Angebot anfragen</a>
-        </div>
-        <p class="muted small">Adresse: Welserstraße 51, 90489 Nürnberg</p>
-      </div>
+  <!-- Animasyonlu arka plan -->
+  <div id="bg" class="bg" aria-hidden="true"></div>
 
-      <div class="hero__badge">
-        <!-- minimalist “logo” glyph (hard hat + tools) -->
-        <div class="glyph" aria-hidden="true">
-          <div class="hat"></div><div class="cross"></div>
-        </div>
-        <div class="badge">
-          <span class="badge__title">24h Rückmeldung</span>
-          <span class="badge__sub">Kostenlose Besichtigung · Festpreis</span>
-        </div>
+  <!-- Hero -->
+  <main id="top" class="hero">
+    <div class="hero-inner">
+      <h1>Herzlich Willkommen!</h1>
+      <p class="lead">Saubere Arbeit. Klare Preise. Nürnberg & Umgebung.</p>
+      <div class="cta">
+        <a class="btn primary" href="tel:+4917662442952">Jetzt anrufen</a>
+        <a class="btn" href="https://wa.me/4917662442952" target="_blank" rel="noopener">Auf WhatsApp schreiben</a>
       </div>
     </div>
-    <a class="scroll" href="#leistungen" aria-label="Nach unten scrollen">▾</a>
   </main>
 
-  <!-- LEISTUNGEN -->
-  <section id="leistungen" class="section">
-    <div class="container">
-      <h2 class="section__title">Unsere Leistungen</h2>
-
-      <div class="cards">
-        <article class="card">
-          <div class="card__head">
-            <span class="card__icon">🛠️</span>
-            <h3>Abbrucharbeiten</h3>
-          </div>
-          <ul class="clean">
-            <li>Wände, Böden & Decken</li>
-            <li>Entkernung (Küche/Bad)</li>
-            <li>Container · Entsorgung · Staubschutz</li>
-          </ul>
-          <button class="chip ghost" data-call>Termin anfragen</button>
-        </article>
-
-        <article class="card">
-          <div class="card__head">
-            <span class="card__icon">🧼</span>
-            <h3>Gebäudereinigung</h3>
-          </div>
-          <ul class="clean">
-            <li>Unterhalt & Grundreinigung</li>
-            <li>Fenster/Glas · Bauendreinigung</li>
-            <li>Dokumentation · Qualitätssicherung</li>
-          </ul>
-          <button class="chip ghost" data-wa>WhatsApp senden</button>
-        </article>
-
-        <article class="card">
-          <div class="card__head">
-            <span class="card__icon">🌿</span>
-            <h3>Gartenarbeiten</h3>
-          </div>
-          <ul class="clean">
-            <li>Hecken-/Baumschnitt</li>
-            <li>Rasenpflege & Bewässerung</li>
-            <li>Laub · Schnittgut · Abtransport</li>
-          </ul>
-          <a class="chip ghost" href="#kontakt">Kontakt</a>
-        </article>
-      </div>
+  <!-- 3 Hizmet kutusu -->
+  <section class="section">
+    <div class="container cards">
+      <button class="card" data-gallery="abbruch" aria-haspopup="dialog">
+        <div class="card-ico">🛠️</div>
+        <h3>Abbruch</h3>
+        <p>Entkernung, Rückbau, Entsorgung</p>
+      </button>
+      <button class="card" data-gallery="reinigung" aria-haspopup="dialog">
+        <div class="card-ico">🧼</div>
+        <h3>Reinigung</h3>
+        <p>Unterhalt, Glas & Bauende</p>
+      </button>
+      <button class="card" data-gallery="garten" aria-haspopup="dialog">
+        <div class="card-ico">🌿</div>
+        <h3>Garten</h3>
+        <p>Schnitt, Pflege, Abtransport</p>
+      </button>
     </div>
   </section>
 
-  <!-- ÜBER UNS -->
-  <section id="ueber" class="section section--glass">
-    <div class="container grid-3">
-      <article class="panel">
-        <h3>Über uns</h3>
-        <p>Familiengeführtes Team mit Fokus auf Termintreue und ehrlicher Beratung.
-           Wir denken voraus, damit es bei Ihnen reibungslos läuft.</p>
-      </article>
-      <article class="panel">
-        <h3>Schnelles Angebot</h3>
-        <p>Fotos per WhatsApp schicken, Eckdaten nennen – häufiges Angebot am selben Tag.
-           Transparent, fair und verbindlich.</p>
-      </article>
-      <article class="panel">
-        <h3>Für Firmen</h3>
-        <p>Objektbetreuung, flexible Zeitfenster, Sicherheitsunterweisung und digitale Übergabeprotokolle.</p>
-      </article>
-    </div>
-  </section>
-
-  <!-- KONTAKT -->
-  <section id="kontakt" class="section">
-    <div class="container contact">
-      <div class="info">
-        <h2 class="section__title">Kontakt</h2>
-        <div class="info__list">
-          <div class="info__row">📍 <div><strong>Adresse</strong><br>Welserstraße 51, 90489 Nürnberg</div></div>
-          <div class="info__row">📞 <div><strong>Telefon</strong><br>
-            <a href="tel:+4917662442952">0176 6244 2952</a> ·
-            <a href="tel:+4917662442950">0176 6244 2950</a></div></div>
-          <div class="info__row">💬 <div><strong>WhatsApp</strong><br>
-            <a href="https://wa.me/4917662442952" target="_blank" rel="noopener">Nachricht senden</a></div></div>
-          <div class="info__row">✉️ <div><strong>E-Mail</strong><br>
-            <a href="mailto:info@dinc-hammer.de">info@dinc-hammer.de</a><br>
-            <small>Web: <a href="https://dinc-hammer.de">dinc-hammer.de</a></small></div></div>
-          <div class="info__row">🕘 <div><strong>Öffnungszeiten</strong><br>
-            Mo–Sa: 08:00–19:00 · So: geschlossen</div></div>
-        </div>
-      </div>
-
-      <iframe class="map" loading="lazy" allowfullscreen
-        src="https://www.google.com/maps?q=Welserstra%C3%9Fe%2051%2C%2090489%20N%C3%BCrnberg&output=embed">
-      </iframe>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
+  <!-- İletişim / Footer -->
   <footer class="footer">
     <div class="container foot">
-      <small>© <span id="y"></span> DİNÇ HAMMER — Nürnberg</small>
-      <small><a href="#" class="muted">Impressum</a> · <a href="#" class="muted">Datenschutz</a></small>
+      <div class="foot-col">
+        <strong>DİNÇ HAMMER</strong>
+        <small>Welserstraße 51 · 90489 Nürnberg</small>
+      </div>
+      <div class="foot-col">
+        <small>Tel: <a href="tel:+4917662442952">+49 176 6244 2952</a></small>
+        <small>E-Mail: <a href="mailto:info@dinc-hammer.de">info@dinc-hammer.de</a></small>
+      </div>
+      <small>© <span id="y"></span> DİNÇ HAMMER</small>
     </div>
   </footer>
 
-  <!-- Floating dial -->
-  <a class="fab" href="tel:+4917662442952" aria-label="Anrufen">📞</a>
+  <!-- GALERİ MODALI (sayfa değişmeden açılır) -->
+  <div id="galleryModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
+    <div class="modal-backdrop" data-close></div>
+    <div class="modal-body" role="document">
+      <button class="modal-close" aria-label="Schließen" data-close>✕</button>
+      <h3 id="galleryTitle">Galerie</h3>
+      <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+    </div>
+  </div>
 
-  <!-- Structured data -->
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":"DİNÇ HAMMER",
-   "address":{"@type":"PostalAddress","streetAddress":"Welserstraße 51","postalCode":"90489","addressLocality":"Nürnberg","addressCountry":"DE"},
-   "telephone":"+49 176 62442952","url":"https://dinc-hammer.de"}
-  </script>
   <script src="script.js"></script>
 </body>
 </html>
