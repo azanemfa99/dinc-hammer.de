@@ -3,57 +3,60 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DİNÇ HAMMER – Abbruch · Gebäudereinigung · Gartenarbeiten</title>
-  <meta name="description" content="DİNÇ HAMMER: Abbrucharbeiten, Gebäudereinigung und Gartenarbeiten in Nürnberg und Umgebung." />
+  <title>Dinc Hammer – Abbruch • Reinigung • Garten</title>
+  <meta name="description" content="Dinc Hammer: Abbrucharbeiten, Gebäudereinigung und Gartenarbeiten in Nürnberg & Umgebung." />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Üst bar -->
+  <!-- Arka plan -->
+  <img src="arkaplan.png" alt="" class="bg" aria-hidden="true">
+  <div class="bg-shade" aria-hidden="true"></div>
+
+  <!-- FX katmanları -->
+  <div class="fx fx-grid" aria-hidden="true"></div>
+  <div class="fx fx-glow" aria-hidden="true"></div>
+  <canvas id="fx-particles" class="fx fx-particles" aria-hidden="true"></canvas>
+
+  <!-- Üst çubuk -->
   <header class="topbar">
-    <div class="wrap">
+    <div class="topbar-wrap">
       <a class="brand" href="#top" aria-label="Startseite">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3f/Construction_helmet_icon.svg" alt="" class="brand-ico" />
-        <div class="brand-text">
-          <strong>DİNÇ HAMMER</strong>
-          <span>Abbruch · Reinigung · Garten</span>
-        </div>
+        <img class="brand-logo" src="logo.png" alt="" onerror="this.style.opacity='.18'">
+        <span class="brand-text">Dinc Hammer</span>
       </a>
-      <nav class="nav">
-        <a class="chip" href="https://wa.me/4917662442952" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="chip" href="mailto:info@dinc-hammer.de">E-Mail</a>
+
+      <nav class="header-actions">
+        <a class="chip" href="https://wa.me/4917662442952" target="_blank" rel="noopener">
+          <span class="dot"></span> WhatsApp
+        </a>
+        <a class="chip" href="mailto:info@dinc-hammer.de">
+          <span class="dot alt"></span> E-Mail
+        </a>
       </nav>
     </div>
   </header>
 
-  <!-- Animasyonlu arka plan -->
-  <div id="bg" class="bg" aria-hidden="true"></div>
-
-  <!-- Hero -->
+  <!-- Hero boş geçiş -->
   <main id="top" class="hero">
-    <div class="hero-inner">
-      <h1>Herzlich Willkommen!</h1>
-      <p class="lead">Saubere Arbeit. Klare Preise. Nürnberg & Umgebung.</p>
-      <div class="cta">
-        <a class="btn primary" href="tel:+4917662442952">Jetzt anrufen</a>
-        <a class="btn" href="https://wa.me/4917662442952" target="_blank" rel="noopener">Auf WhatsApp schreiben</a>
-      </div>
-    </div>
+    <div class="hero-inner"></div>
   </main>
 
-  <!-- 3 Hizmet kutusu -->
+  <!-- HİZMETLER -->
   <section class="section">
     <div class="container cards">
-      <button class="card" data-gallery="abbruch" aria-haspopup="dialog">
+      <button class="card glass" data-gallery="abbruch" aria-haspopup="dialog">
         <div class="card-ico">🛠️</div>
         <h3>Abbruch</h3>
         <p>Entkernung, Rückbau, Entsorgung</p>
       </button>
-      <button class="card" data-gallery="reinigung" aria-haspopup="dialog">
+
+      <button class="card glass" data-gallery="reinigung" aria-haspopup="dialog">
         <div class="card-ico">🧼</div>
         <h3>Reinigung</h3>
         <p>Unterhalt, Glas & Bauende</p>
       </button>
-      <button class="card" data-gallery="garten" aria-haspopup="dialog">
+
+      <button class="card glass" data-gallery="garten" aria-haspopup="dialog">
         <div class="card-ico">🌿</div>
         <h3>Garten</h3>
         <p>Schnitt, Pflege, Abtransport</p>
@@ -61,31 +64,74 @@
     </div>
   </section>
 
-  <!-- İletişim / Footer -->
+  <!-- KURUMSAL BLOKLAR -->
+  <section class="section section-contrast">
+    <div class="container cols-3">
+      <div class="box glass">
+        <h4>Warum wir?</h4>
+        <ul class="list">
+          <li>➤ <b>Termintreu</b> & transparent</li>
+          <li>➤ <b>Versichertes Team</b> & Entsorgung</li>
+          <li>➤ <b>Kostenlose Vor-Ort-Beratung</b></li>
+        </ul>
+      </div>
+
+      <div class="box glass">
+        <h4>Leistungsgebiete</h4>
+        <p>Nürnberg · Fürth · Erlangen · Schwabach</p>
+        <p>Auf Anfrage auch Umgebung.</p>
+      </div>
+
+      <div class="box glass">
+        <h4>Schnellkontakt</h4>
+        <p>Tel: <a href="tel:+4917662442952">+49 176 6244 2952</a></p>
+        <p>Mail: <a href="mailto:info@dinc-hammer.de">info@dinc-hammer.de</a></p>
+        <p>WhatsApp: jederzeit</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
   <footer class="footer">
-    <div class="container foot">
-      <div class="foot-col">
-        <strong>DİNÇ HAMMER</strong>
-        <small>Welserstraße 51 · 90489 Nürnberg</small>
+    <div class="container foot-cols">
+      <div>
+        <h5>Dinc Hammer</h5>
+        <p>Welserstraße 51<br>90489 Nürnberg</p>
       </div>
-      <div class="foot-col">
-        <small>Tel: <a href="tel:+4917662442952">+49 176 6244 2952</a></small>
-        <small>E-Mail: <a href="mailto:info@dinc-hammer.de">info@dinc-hammer.de</a></small>
+      <div>
+        <h5>Kontakt</h5>
+        <p>Tel: <a href="tel:+4917662442952">+49 176 6244 2952</a><br>
+           E-Mail: <a href="mailto:info@dinc-hammer.de">info@dinc-hammer.de</a></p>
+        <p>Mo–Sa: 08:00–19:00</p>
       </div>
-      <small>© <span id="y"></span> DİNÇ HAMMER</small>
+      <div>
+        <h5>Links</h5>
+        <p><a href="#top">Start</a> · <a href="#" onclick="event.preventDefault()">Impressum</a> ·
+           <a href="#" onclick="event.preventDefault()">Datenschutz</a></p>
+      </div>
+    </div>
+    <div class="container foot-copy">
+      <small>© <span id="year"></span> Dinc Hammer – Alle Rechte vorbehalten</small>
     </div>
   </footer>
 
-  <!-- GALERİ MODALI (sayfa değişmeden açılır) -->
+  <!-- MODAL SLIDER -->
   <div id="galleryModal" class="modal" role="dialog" aria-modal="true" aria-hidden="true">
     <div class="modal-backdrop" data-close></div>
-    <div class="modal-body" role="document">
+    <div class="modal-body glass" role="document">
       <button class="modal-close" aria-label="Schließen" data-close>✕</button>
       <h3 id="galleryTitle">Galerie</h3>
-      <div id="galleryGrid" class="gallery-grid" aria-live="polite"></div>
+
+      <div class="slider">
+        <button class="slide-nav slide-prev" aria-label="Zurück">‹</button>
+        <img id="slideImage" src="" alt="">
+        <button class="slide-nav slide-next" aria-label="Weiter">›</button>
+      </div>
+      <div class="slider-caption" id="slideCaption"></div>
     </div>
   </div>
 
+  <div id="toast" class="toast" role="status">Fertig ✅</div>
   <script src="script.js"></script>
 </body>
 </html>
