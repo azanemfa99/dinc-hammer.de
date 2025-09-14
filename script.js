@@ -71,8 +71,8 @@ const GALLERIES = {
   Gebäudereinigung: {
     title: "Gebäudereinigung – Galerie",
     images: [
-      {src:"https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1600&auto=format&fit=crop", cap:"Reinigung – 1/2"},
-      {src:"https://images.unsplash.com/photo-1501127122-f385ca6ddd9d?q=80&w=1600&auto=format&fit=crop", cap:"Reinigung – 2/2"}
+      {src:"https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1600&auto=format&fit=crop", cap:"Gebäudereinigung – 1/2"},
+      {src:"https://images.unsplash.com/photo-1501127122-f385ca6ddd9d?q=80&w=1600&auto=format&fit=crop", cap:"Gebäudereinigung – 2/2"}
     ]
   },
   garten: {
@@ -148,4 +148,5 @@ addEventListener('keydown', (e)=>{
     if(dx>0) prevBtn.click(); else nextBtn.click();
   });
 })();
+
 
