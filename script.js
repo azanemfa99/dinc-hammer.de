@@ -68,7 +68,7 @@ const GALLERIES = {
       {src:"https://images.unsplash.com/photo-1504307651254-35680f356dfd?q=80&w=1600&auto=format&fit=crop", cap:"Abbruch – 2/2"}
     ]
   },
-  reinigung: {
+  Gebäudereinigung: {
     title: "Gebäudereinigung – Galerie",
     images: [
       {src:"https://images.unsplash.com/photo-1519337265831-281ec6cc8514?q=80&w=1600&auto=format&fit=crop", cap:"Reinigung – 1/2"},
@@ -148,3 +148,4 @@ addEventListener('keydown', (e)=>{
     if(dx>0) prevBtn.click(); else nextBtn.click();
   });
 })();
+
